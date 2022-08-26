@@ -1,3 +1,7 @@
 <div>
-    {{-- Stop trying to control. --}}
+    <ul>
+        @foreach ($data as $contact)
+            <li>{{ $contact->name }}</li>
+        @endforeach
+    </ul>
 </div>
