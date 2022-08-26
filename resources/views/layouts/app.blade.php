@@ -8,18 +8,7 @@
     <title>Livewire</title>
 
     <!-- Styles -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        clifford: '#da373d',
-                    }
-                }
-            }
-        }
-    </script>
+    @vite('resources/css/app.css')
 
     @stack('head')
 
