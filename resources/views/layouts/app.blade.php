@@ -9,22 +9,6 @@
 
     <!-- Styles -->
     <script src="https://cdn.tailwindcss.com"></script>
-
-    @livewireStyles
-    
-    @stack('head')
-</head>
-
-<body class="auth">
-
-    <main>
-        @yield('content')
-    </main>
-
-    <footer>
-        @yield('footer')
-    </footer>
-
     <script>
         tailwind.config = {
             theme: {
@@ -37,9 +21,24 @@
         }
     </script>
 
-    @livewireScripts
+    @stack('head')
+
+    @livewireStyles
+</head>
+
+<body class="auth">
+
+    <main>
+        @yield('content')
+    </main>
+
+    <footer>
+        @yield('footer')
+    </footer>
 
     @stack('script')
+    
+    @livewireScripts
 </body>
 
 </html>
