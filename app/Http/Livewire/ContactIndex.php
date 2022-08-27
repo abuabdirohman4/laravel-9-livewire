@@ -11,7 +11,7 @@ class ContactIndex extends Component
     {
         // $this->data = Contact::latest()->get();
         return view('livewire.contact-index', [
-            "data" => Contact::latest()->get()
+            "contacts" => Contact::latest()->get()
         ]);
     }
 }

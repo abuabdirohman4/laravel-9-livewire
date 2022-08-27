@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container mx-auto">
-        <div class="w-1/2 mx-auto bg-white rounded-lg border shadow-md dark:bg-gray-800 dark:border-gray-700">
+        <div class="w-3/4 mx-auto bg-white rounded-lg border shadow-md dark:bg-gray-800 dark:border-gray-700">
             <div
                 class="flex flex-wrap text-sm font-medium text-center text-gray-500 bg-gray-50 rounded-t-lg border-b border-gray-200 dark:border-gray-700 dark:text-gray-400 dark:bg-gray-800">
                 <div class="mr-2">
