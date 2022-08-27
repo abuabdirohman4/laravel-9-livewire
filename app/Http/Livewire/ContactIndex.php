@@ -9,7 +9,9 @@ class ContactIndex extends Component
 {
     public function render()
     {
-        $this->data = Contact::latest()->get();
-        return view('livewire.contact-index');
+        // $this->data = Contact::latest()->get();
+        return view('livewire.contact-index', [
+            "data" => Contact::latest()->get()
+        ]);
     }
 }
