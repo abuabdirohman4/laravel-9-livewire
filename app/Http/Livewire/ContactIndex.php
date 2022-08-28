@@ -7,6 +7,8 @@ use Livewire\Component;
 
 class ContactIndex extends Component
 {
+    public $statusUpdate = false;
+
     protected $listeners = [
         // 'contactStored'
         'contactStored' => 'handleStored'
@@ -25,5 +27,12 @@ class ContactIndex extends Component
     {
         // dd($contact);
         session()->flash('message', "Contact {$contact['name']} was stored!");
+    }
+
+    public function getContact($id)
+    {
+        $this->statusUpdate = true;
+        $contact = Contact::find($id);
+        $this->emit('getContact', $contact);
     }
 }
