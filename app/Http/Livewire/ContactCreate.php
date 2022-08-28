@@ -24,21 +24,21 @@ class ContactCreate extends Component
 
     public function store()
     {
-        Contact::create([
+        // Contact::create([
+        //     'name' => $this->name,
+        //     'phone' => $this->phone
+        // ]);
+        $contact = Contact::create([
             'name' => $this->name,
             'phone' => $this->phone
         ]);
         
         $this->resetInput();
         
-        $this->emit('contactStored');
-
+        // $this->emit('contactStored');
         // Kirim parameter
-        // $this->emit('contactStored', $contact);
-        // $contact = Contact::create([
-        //     'name' => $this->name,
-        //     'phone' => $this->phone
-        // ]);
+        $this->emit('contactStored', $contact);
+
     }
 
     public function resetInput()

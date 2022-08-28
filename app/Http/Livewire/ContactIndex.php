@@ -8,8 +8,8 @@ use Livewire\Component;
 class ContactIndex extends Component
 {
     protected $listeners = [
-        // 'contactStored' => 'handleStored'
-        'contactStored'
+        // 'contactStored'
+        'contactStored' => 'handleStored'
     ];
 
     public function render()
@@ -20,9 +20,10 @@ class ContactIndex extends Component
         ]);
     }
 
-    // public function handleStored($contact)
-    public function contactStored()
+    // public function contactStored()
+    public function handleStored($contact)
     {
         // dd($contact);
+        session()->flash('message', "Contact {$contact['name']} was stored!");
     }
 }
