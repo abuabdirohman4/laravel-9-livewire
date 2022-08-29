@@ -185,6 +185,8 @@
         @yield('footer')
     </footer>
 
+    @vite('/node_modules/flowbite/dist/flowbite.js')
+
     @stack('script')
 
     @livewireScripts
