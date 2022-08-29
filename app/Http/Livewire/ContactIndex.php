@@ -33,14 +33,21 @@ class ContactIndex extends Component
     // public function contactStored()
     public function handleStored($contact)
     {
-        // dd($contact);
         session()->flash('message', "Contact {$contact['name']} was stored!");
     }
 
     public function handleUpdated($contact)
     {
-        // dd($contact);
         session()->flash('message', "Contact was updated! to {$contact['name']}");
+    }
+
+    public function destroy($id)
+    {   
+        if ($id) {
+            $data = Contact::find($id);
+            $data->delete();
+            session()->flash('message', "Contact was deleted");
+        }
     }
 
     // Hirarki
