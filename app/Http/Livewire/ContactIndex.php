@@ -4,9 +4,12 @@ namespace App\Http\Livewire;
 
 use App\Models\Contact;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class ContactIndex extends Component
 {
+    use WithPagination;
+
     public $statusUpdate = false;
 
     protected $listeners = [
@@ -19,7 +22,8 @@ class ContactIndex extends Component
     {
         // $this->data = Contact::latest()->get();
         return view('livewire.contact-index', [
-            "contacts" => Contact::latest()->get()
+            // "contacts" => Contact::latest()->get()
+            "contacts" => Contact::latest()->paginate(5)
         ]);
     }
 
@@ -44,9 +48,9 @@ class ContactIndex extends Component
     public function destroy($id)
     {   
         if ($id) {
-            $data = Contact::find($id);
-            $data->delete();
-            session()->flash('message', "Contact was deleted");
+            $contact = Contact::find($id);
+            $contact->delete();
+            session()->flash('message', "Contact {$contact['name']} was deleted");
         }
     }
 
