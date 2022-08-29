@@ -11,7 +11,8 @@ class ContactIndex extends Component
 
     protected $listeners = [
         // 'contactStored'
-        'contactStored' => 'handleStored'
+        'contactStored' => 'handleStored',
+        'contactUpdated' => 'handleUpdated'
     ];
 
     public function render()
@@ -22,6 +23,13 @@ class ContactIndex extends Component
         ]);
     }
 
+    public function getContact($id)
+    {
+        $this->statusUpdate = true;
+        $contact = Contact::find($id);
+        $this->emit('getContact', $contact);
+    }
+
     // public function contactStored()
     public function handleStored($contact)
     {
@@ -29,10 +37,17 @@ class ContactIndex extends Component
         session()->flash('message', "Contact {$contact['name']} was stored!");
     }
 
-    public function getContact($id)
+    public function handleUpdated($contact)
     {
-        $this->statusUpdate = true;
-        $contact = Contact::find($id);
-        $this->emit('getContact', $contact);
+        // dd($contact);
+        session()->flash('message', "Contact was updated! to {$contact['name']}");
     }
+
+    // Hirarki
+    // ContactUpdate
+    // ContactIndex
+    // ContactCreate
+
+    // ContactIndex
+    // ContactUpdate
 }
