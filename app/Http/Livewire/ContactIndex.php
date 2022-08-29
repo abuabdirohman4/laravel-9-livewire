@@ -29,7 +29,10 @@ class ContactIndex extends Component
             // "contacts" => Contact::latest()->paginate($this->paginate)
             "contacts" => $this->search === null ?
             Contact::latest()->paginate($this->paginate) :
-            Contact::latest()->where('name', 'like', '%' . $this->search . '%')->paginate($this->paginate)
+            Contact::latest()
+                ->where('name', 'like', '%' . $this->search . '%',)
+                ->orWhere('phone', 'like', '%' . $this->search . '%',)
+                ->paginate($this->paginate)
         ]);
     }
 
