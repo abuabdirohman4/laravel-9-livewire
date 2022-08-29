@@ -12,21 +12,32 @@ class ContactIndex extends Component
 
     public $statusUpdate = false;
     public $paginate = 5;
+    public $search;
+
+    protected $queryString = ['search'];
+
+    public function mount()
+    {
+        $this->search = request()->query('search', $this->search);
+    }
+    
+    public function render()
+    {
+        // $this->data = Contact::latest()->get();
+        return view('livewire.contact-index', [
+            // "contacts" => Contact::latest()->get()
+            // "contacts" => Contact::latest()->paginate($this->paginate)
+            "contacts" => $this->search === null ?
+            Contact::latest()->paginate($this->paginate) :
+            Contact::latest()->where('name', 'like', '%' . $this->search . '%')->paginate($this->paginate)
+        ]);
+    }
 
     protected $listeners = [
         // 'contactStored'
         'contactStored' => 'handleStored',
         'contactUpdated' => 'handleUpdated'
     ];
-
-    public function render()
-    {
-        // $this->data = Contact::latest()->get();
-        return view('livewire.contact-index', [
-            // "contacts" => Contact::latest()->get()
-            "contacts" => Contact::latest()->paginate($this->paginate)
-        ]);
-    }
 
     public function getContact($id)
     {
