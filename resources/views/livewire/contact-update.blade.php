@@ -1,4 +1,4 @@
-<div class="mb-5 mx-2">
+<div class="mb-5">
     <form wire:submit.prevent="update">
         <input type="hidden" name="" wire:model="contactId">
         <div class="grid md:grid-cols-2 md:gap-6">
