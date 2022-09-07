@@ -17,7 +17,9 @@
 
 <body class="auth bg-gray-100">
 
-    <x-navbar/>
+    @if (!Request::is('login'))
+        <x-navbar />
+    @endif
 
     <main>
         @yield('content')
