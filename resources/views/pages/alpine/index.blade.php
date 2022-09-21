@@ -12,22 +12,32 @@
             </div>
             <div>
                 <div class="p-4 bg-white rounded-lg md:p-8 md:pt-6 dark:bg-gray-800">
+                    {{-- Using Alpine Inside Of Livewire --}}
+                    {{-- <h2 class="text-xl mb-5 font-medium mb-1">Dropdown</h2> --}}
                     {{-- <x-dropdown/> --}}
+                    
+                    {{-- Extracting Reusable Blade Components --}}
                     <h2 class="text-xl mb-5 font-medium mb-1">Dropdown</h2>
+                    <p class="mt-1 mb-3">Interacting With Livewire From Alpine: $wire</p>
                     <x-dropdown>
                         <x-slot name="trigger">
                             <button>Show More...</button>
                         </x-slot>
-                        
                         <ul>
                             <li><button wire:click="archive">Archive</button></li>
                             <li><button wire:click="delete">Delete</button></li>
                         </ul>
                     </x-dropdown>
                     
-                    <h2 class="text-xl mb-5 font-medium mb-1 mt-5">Counter</h2>
-                    <p>Interacting With Livewire From Alpine: $wire</p>
+                    {{-- Interacting With Livewire From Alpine: $wire --}}
+                    <h2 class="text-xl font-medium mt-5">Counter</h2>
+                    <p class="mt-1">Interacting With Livewire From Alpine: $wire</p>
                     <livewire:counter>
+
+                    {{--  --}}
+                    <h2 class="text-xl font-medium mt-5">Dropdown</h2>
+                    <p class="mt-1">Sharing State Between Livewire And Alpine: (@)entangle</p>
+                    <livewire:dropdown>
                 </div>
             </div>
         </div>
