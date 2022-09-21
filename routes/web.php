@@ -17,5 +17,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('pages.crud.index');
 });
+Route::get('/cascading', function () {
+    return view('pages.cascading.index');
+});
+Route::get('/alpine', function () {
+    return view('pages.alpine.index');
+});
 
 Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
