@@ -20,7 +20,7 @@ class ContactIndex extends Component
     {
         $this->search = request()->query('search', $this->search);
     }
-    
+
     public function render()
     {
         // $this->data = Contact::latest()->get();
@@ -28,12 +28,17 @@ class ContactIndex extends Component
             // "contacts" => Contact::latest()->get()
             // "contacts" => Contact::latest()->paginate($this->paginate)
             "contacts" => $this->search === null ?
-            Contact::latest()->paginate($this->paginate) :
-            Contact::latest()
+                Contact::latest()->paginate($this->paginate) :
+                Contact::latest()
                 ->where('name', 'like', '%' . $this->search . '%',)
                 ->orWhere('phone', 'like', '%' . $this->search . '%',)
                 ->paginate($this->paginate)
         ]);
+    }
+
+    public function updatingSearch()
+    {
+        $this->gotoPage(1);
     }
 
     protected $listeners = [
@@ -61,7 +66,7 @@ class ContactIndex extends Component
     }
 
     public function destroy($id)
-    {   
+    {
         if ($id) {
             $contact = Contact::find($id);
             $contact->delete();
